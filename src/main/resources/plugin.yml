@@ -1,0 +1,20 @@
+main: com.techiecrow.Pokes
+name: Pokes
+description: Poke people in Minecraft
+version: 1.4.1
+author: TechieCrow
+website: https://www.spigotmc.org/resources/pokes.14315/
+commands:
+  poke:
+    description: Poke someone! Usage '/poke <player>'
+  pokes:
+    description: Display players pokes count Usage '/pokes <player>'
+  pokesreload:
+    description: Pokes reload command Usage '/pokesreload'
+permissions:
+  poke.poke:
+   default: true
+  poke.display:
+   default: true
+  poke.reload:
+   default: op
