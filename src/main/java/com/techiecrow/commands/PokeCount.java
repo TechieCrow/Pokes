@@ -1,12 +1,12 @@
 package com.techiecrow.commands;
 
+import com.techiecrow.Pokes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import com.techiecrow.Pokes;
 
 public class PokeCount implements CommandExecutor
 {
@@ -26,7 +26,9 @@ public class PokeCount implements CommandExecutor
         {
             if (args.length != 1)
             {
+                sender.sendMessage(prefix + ChatColor.RED + "Usage: /poke <player>");
                 sender.sendMessage(prefix + ChatColor.RED + "Usage: /pokes <player>");
+                sender.sendMessage(prefix + ChatColor.RED + "Usage: /pokesreload");
                 return true;
             }
 

@@ -1,5 +1,6 @@
 package com.techiecrow.commands;
 
+import com.techiecrow.Pokes;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -7,7 +8,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import com.techiecrow.Pokes;
 
 import java.util.HashMap;
 
@@ -43,6 +43,8 @@ public class PokePlayer implements CommandExecutor
             if (args.length != 1)
             {
                 sender.sendMessage(prefix + ChatColor.RED + "Usage: /poke <player>");
+                sender.sendMessage(prefix + ChatColor.RED + "Usage: /pokes <player>");
+                sender.sendMessage(prefix + ChatColor.RED + "Usage: /pokesreload");
                 return true;
             }
 
@@ -66,15 +68,21 @@ public class PokePlayer implements CommandExecutor
             }
 
             Player player = (Player) sender;
-            String playerpoker = ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig()
-                    .getString("Poker Message").replace("%poked_name%", target1.getDisplayName()));
-            String playerpoked = ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig()
-                    .getString("Poked Message").replace("%poker_name%", player.getDisplayName()));
+
+            String playerpoker = ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("Poker Message").replace("%poked_name%", target1.getDisplayName()));
+
+            String playerpoked = ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("Poked Message").replace("%poker_name%", player.getDisplayName()));
+
             String playsound = this.plugin.getConfig().getString("Poke Sound");
+
             this.cooldowns.put(sender.getName(), Long.valueOf(System.currentTimeMillis()));
+
             player.sendMessage(prefix + playerpoker);
+
             target1.playSound(target1.getLocation(), Sound.valueOf(playsound), 1.0F, 1.0F);
+
             target1.sendMessage(prefix + playerpoked);
+
             if (this.plugin.getConfig().getInt("Players." + target1.getUniqueId() + ".Pokes") <= 0)
             {
                 this.plugin.getConfig().set("Players." + target1.getUniqueId() + ".Pokes", Integer.valueOf(1));
@@ -83,8 +91,7 @@ public class PokePlayer implements CommandExecutor
             {
                 byte i = 1;
                 int pokecount = this.plugin.getConfig().getInt("Players." + target1.getUniqueId() + ".Pokes");
-                this.plugin.getConfig().set("Players." + target1.getUniqueId() + ".Pokes",
-                        Integer.valueOf(pokecount + i));
+                this.plugin.getConfig().set("Players." + target1.getUniqueId() + ".Pokes", Integer.valueOf(pokecount + i));
                 this.plugin.saveConfig();
             }
         } else

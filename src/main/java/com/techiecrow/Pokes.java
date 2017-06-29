@@ -2,6 +2,7 @@ package com.techiecrow;
 
 import com.techiecrow.commands.PokeCount;
 import com.techiecrow.commands.PokePlayer;
+import org.bstats.Metrics;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -9,12 +10,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Pokes extends JavaPlugin
 {
+    @Override
     public void onEnable()
     {
+        Metrics metrics = new Metrics(this);
+
         this.RegisterCommands();
         this.RegisterConfig();
     }
 
+    @Override
     public void onDisable()
     {
     }
@@ -26,7 +31,7 @@ public class Pokes extends JavaPlugin
         {
             this.reloadConfig();
             this.getConfig();
-            sender.sendMessage(prefix + ChatColor.GREEN + "Successfully reloaded the config!");
+            sender.sendMessage(prefix + ChatColor.GREEN + "Reloaded the config!");
             return true;
         } else
         {
@@ -35,12 +40,14 @@ public class Pokes extends JavaPlugin
         }
     }
 
+    // Makes commands work
     public void RegisterCommands()
     {
         this.getCommand("poke").setExecutor(new PokePlayer(this));
         this.getCommand("pokes").setExecutor(new PokeCount(this));
     }
 
+    // Make default config and save it
     private void RegisterConfig()
     {
         this.getConfig().options().copyDefaults(true);

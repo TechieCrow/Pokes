@@ -10,7 +10,7 @@ commands:
   pokes:
     description: Display players pokes count Usage '/pokes <player>'
   pokesreload:
-    description: Pokes reload command Usage '/pokesreload'
+    description: Pokes reload command Usage '/poke reload'
 permissions:
   poke.poke:
    default: true
