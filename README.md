@@ -16,12 +16,12 @@ https://raw.githubusercontent.com/TechieCrow/Pokes/master/LICENSE.txt
 To install this plugin, download it from the build server, drag and drop it into the "plugins" folder of your Spigot or Bukkit server and restart the server.
 
 **Commands & Permissions:**
-<br>
-| Command | Permission | Description |
-| --- | --- | --- |
-| `/poke <player>` | `poke.poke` | Poke another player |
-| `/pokes <player>` | `poke.display` | Display another players poke count |
-| `/pokesreload` | `poke.reload` | Reload Pokes |
+
+Command | Permission
+:---: | :---:
+`/poke <player>` | `poke.poke`
+`/pokes <player>` | `poke.display`
+`/pokesreload` | `poke.reload`
 
 **Help & Sugestions:**
 <br>
