@@ -17,11 +17,11 @@ To install this plugin, download it from the build server, drag and drop it into
 
 **Commands & Permissions:**
 <br>
-Command | Permission | Description
---- | --- | ---
-`/poke <player>` | `poke.poke` | Poke another player
-`/pokes <player>` | `poke.display` | Display another players poke count
-`/pokesreload` | `poke.reload` | Reload Pokes
+|Command | Permission | Description|
+|--- | --- | ---|
+|`/poke <player>` | `poke.poke` | Poke another player|
+|`/pokes <player>` | `poke.display` | Display another players poke count|
+|`/pokesreload` | `poke.reload` | Reload Pokes|
 
 **Help & Sugestions:**
 <br>
