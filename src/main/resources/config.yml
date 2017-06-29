@@ -18,18 +18,6 @@ Poked Message: '&a&l&oYou were poked by: &b&l&o%poker_name%'
 
 Count Message: '%poked_name% &a&l&oHas been poked &b&l&o%count% &a&l&otimes'
 
-Poke Sound: 'PIG_IDLE'
+Poke Sound: 'ENTITY_PIG_AMBIENT'
 
 Cooldown: 30
-
-MySQL: false
-
-Host: localhost
-
-Port: 3306
-
-Database: Database-Name
-
-Username: Database-Username
-
-Password: Database-Password
