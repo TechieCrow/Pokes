@@ -9,7 +9,7 @@ Poke players in Minecraft!
 
 **License:**
 <br>
-https://raw.githubusercontent.com/TechieCrow/Pokes/master/LICENSE.txt
+https://github.com/TechieCrow/Pokes/blob/master/LICENSE.txt
 
 **Installation:**
 <br>
@@ -21,7 +21,7 @@ To install this plugin, download it from the build server, drag and drop it into
 | :-------: | :----: | :---: |
 | `/poke <player>` | `poke.poke` | Poke a player |
 | `/pokes <player>` | `poke.display` | Display a players poke count |
-| `/pokesreload` | `poke.reload` | Reload Pokes|
+| `/pokesreload` | `poke.reload` | Reload Pokes |
 
 **Help & Sugestions:**
 <br>
