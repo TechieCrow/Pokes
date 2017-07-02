@@ -1,7 +1,7 @@
 # Pokes
 **Build Status:**
 <br>
-[![Build Status](http://173.254.207.78:8080/buildStatus/icon?job=Pokes)](http://173.254.207.78:8080/job/Pokes/)
+[![Build Status](http://ci.mixelpod.com/buildStatus/icon?job=Pokes)](http://ci.mixelpod.com/job/Pokes/)
 
 **Description:**
 <br>
@@ -25,4 +25,4 @@ To install this plugin, download it from the build server, drag and drop it into
 
 **Help & Sugestions:**
 <br>
-I am open to any advice or suggestions just create an issue with your advice or suggestions and if you think you can help with the plugin please feel free to submit a pull request with your changes! :)
+I am open to any advice or suggestions just create an issue with your advice or suggestions and if you think you can help with the plugin please feel free to submit a pull request with your changes!
