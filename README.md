@@ -1,7 +1,7 @@
 # Pokes
 **Build Status:**
 <br>
-[![Build Status](https://travis-ci.org/TechieCrow/Pokes.svg?branch=master)](https://travis-ci.org/TechieCrow/Pokes/)
+[![CircleCI](https://circleci.com/gh/TechieCrow/Pokes.svg?style=svg)](https://circleci.com/gh/TechieCrow/Pokes)
 
 **Description:**
 <br>
