@@ -1,7 +1,7 @@
 # Pokes
 **Build Status:**
 <br>
-[![Build Status](http://ci.mixelpod.com/buildStatus/icon?job=Pokes)](http://ci.mixelpod.com/job/Pokes/)
+[![Build Status](https://travis-ci.org/TechieCrow/Pokes.svg?branch=master)](https://travis-ci.org/TechieCrow/Pokes/)
 
 **Description:**
 <br>
