@@ -27,4 +27,4 @@ jobs:
       - run: mvn integration-test
       
       - store_artifacts:
-          path: /home/circleci/repo/target
+          path: /home/circleci/repo/target/Pokes.jar
