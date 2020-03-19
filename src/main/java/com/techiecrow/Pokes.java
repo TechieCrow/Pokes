@@ -2,7 +2,7 @@ package com.techiecrow;
 
 import com.techiecrow.commands.PokeCount;
 import com.techiecrow.commands.PokePlayer;
-import org.bstats.Metrics;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -11,9 +11,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Pokes extends JavaPlugin
 {
     @Override
-    public void onEnable()
-    {
-        Metrics metrics = new Metrics(this);
+    public void onEnable() {
+        int pluginId = 1054;
+        Metrics metrics = new Metrics(this, pluginId);
 
         this.RegisterCommands();
         this.RegisterConfig();
@@ -35,7 +35,7 @@ public class Pokes extends JavaPlugin
             return true;
         } else
         {
-            sender.sendMessage(prefix + ChatColor.RED + "You need the \'poke.reload\' permission to use this command.");
+            sender.sendMessage(prefix + ChatColor.RED + "You need the 'poke.reload' permission to use this command.");
             return false;
         }
     }

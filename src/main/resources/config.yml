@@ -4,7 +4,7 @@
 # Poker Message = The message the poker receives.
 # Poked Message = The message the poked receives.
 # Poke Sound = The sound the poked hears. (https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html)
-# Cooldown = the cooldown time in seconds.
+# CoolDown = the cooldown time in seconds.
 # %poked_name% = The poked players name.
 # %poker_name% = The poker players name.
 # %count% = The number of pokes the player has received.
@@ -20,4 +20,4 @@ Count Message: '%poked_name% &a&l&oHas been poked &b&l&o%count% &a&l&otimes'
 
 Poke Sound: 'ENTITY_PIG_AMBIENT'
 
-Cooldown: 30
+CoolDown: 30
