@@ -11,14 +11,12 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-public class PokePlayer implements CommandExecutor
-{
+public class PokePlayer implements CommandExecutor {
 
     public HashMap<String, Long> coolDowns = new HashMap<String, Long>();
     private Pokes plugin;
 
-    public PokePlayer(Pokes pl)
-    {
+    public PokePlayer(Pokes pl) {
         this.plugin = pl;
     }
 
@@ -49,14 +47,12 @@ public class PokePlayer implements CommandExecutor
             }
 
             Player target1 = Bukkit.getServer().getPlayer(args[0]);
-            if (target1 == null)
-            {
+            if (target1 == null) {
                 sender.sendMessage(prefix + ChatColor.RED + " '" + args[0] + "' is not currently online.");
                 return true;
             }
 
-            if (target1 == sender)
-            {
+            if (target1 == sender) {
                 sender.sendMessage(prefix + ChatColor.RED + " You cannot poke yourself!");
                 return true;
             }
@@ -86,8 +82,7 @@ public class PokePlayer implements CommandExecutor
                 this.plugin.getConfig().set("Players." + target1.getUniqueId() + ".Pokes", pokeCount + i);
                 this.plugin.saveConfig();
             }
-        } else
-        {
+        } else {
             sender.sendMessage(prefix + ChatColor.RED + "You need the 'poke.poke' permission to use this command.");
         }
 

@@ -6,12 +6,12 @@
 
     <groupId>com.techiecrow</groupId>
     <artifactId>Pokes</artifactId>
-    <version>1.4.2</version>
+    <version>1.5.0</version>
     <name>Pokes</name>
     <description>Poke people in Minecraft!</description>
 
     <build>
-        <finalName>${project.name}</finalName>
+        <finalName>${project.name}-${version}</finalName>
         <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
         <resources>
             <resource>
@@ -33,7 +33,7 @@
                     <relocations>
                         <relocation>
                             <pattern>org.bstats</pattern>
-                            <shadedPattern>me.name.util</shadedPattern>
+                            <shadedPattern>com.techiecrow.Pokes</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -61,11 +61,10 @@
     </repositories>
 
     <dependencies>
-        <!-- Spigot as an example -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>LATEST</version>
+            <version>1.15.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <!-- bStats -->

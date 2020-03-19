@@ -8,22 +8,18 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class PokeCount implements CommandExecutor
-{
+public class PokeCount implements CommandExecutor {
 
     private Pokes plugin;
 
 
-    public PokeCount(Pokes pl)
-    {
+    public PokeCount(Pokes pl) {
         this.plugin = pl;
     }
 
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
-    {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         String prefix = ChatColor.translateAlternateColorCodes('&', this.plugin.getConfig().getString("Prefix"));
-        if (label.equalsIgnoreCase("pokes") && sender.hasPermission("poke.display"))
-        {
+        if (label.equalsIgnoreCase("pokes") && sender.hasPermission("poke.display")) {
             if (args.length != 1) {
                 sender.sendMessage(prefix + ChatColor.RED + "Usage: /poke <player>");
                 sender.sendMessage(prefix + ChatColor.RED + "Usage: /pokes <player>");
