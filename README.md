@@ -1,8 +1,4 @@
 # Pokes
-**Build Status:**
-<br>
-[![CircleCI](https://circleci.com/gh/TechieCrow/Pokes.svg?style=svg)](https://circleci.com/gh/TechieCrow/Pokes)
-
 **Description:**
 <br>
 Poke players in Minecraft!
