@@ -24,7 +24,7 @@ jobs:
       run: mvn clean package
     
     # Output 
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2-preview
       with:
-        name: /home/runner/work/Pokes/Pokes/target/Pokes-1.5.0.jar
-        path: /home/runner/work/Pokes/Pokes/target/Pokes-1.5.0.jar
+        name: Pokes
+        path: /home/runner/work/Pokes/Pokes/target/Pokes*.jar
