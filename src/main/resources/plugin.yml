@@ -1,8 +1,8 @@
 main: com.techiecrow.Pokes
 name: Pokes
 description: Poke people in Minecraft
-version: 1.5.0
-api-version: 1.15
+version: 1.6.0
+api-version: 1.17
 author: TechieCrow
 website: https://www.spigotmc.org/resources/pokes.14315/
 prefix: Pokes
