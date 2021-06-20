@@ -8,6 +8,7 @@
 # %poked_name% = The poked players name.
 # %poker_name% = The poker players name.
 # %count% = The number of pokes the player has received.
+# If you have problems using SSL for the database connection please change it to false
 #
 
 Prefix: '&a[&bPokes&a]&f '
@@ -21,3 +22,17 @@ Count Message: '%poked_name% &a&l&oHas been poked &b&l&o%count% &a&l&otimes'
 Poke Sound: 'ENTITY_PIG_AMBIENT'
 
 CoolDown: 30
+
+Enable Database: false
+
+SQL Host: localhost
+
+SQL Port: 3306
+
+SQL Username: username
+
+SQL Password: Password
+
+SQL Database: Database
+
+SQL Use SSL: false

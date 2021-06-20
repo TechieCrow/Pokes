@@ -73,14 +73,19 @@ public class PokePlayer implements CommandExecutor {
 
             target1.sendMessage(prefix + playerPoked);
 
-            if (this.plugin.getConfig().getInt("Players." + target1.getUniqueId() + ".Pokes") <= 0) {
-                this.plugin.getConfig().set("Players." + target1.getUniqueId() + ".Pokes", 1);
-                this.plugin.saveConfig();
-            } else if (this.plugin.getConfig().getInt("Players." + target1.getUniqueId() + ".Pokes") > 0) {
-                byte i = 1;
-                int pokeCount = this.plugin.getConfig().getInt("Players." + target1.getUniqueId() + ".Pokes");
-                this.plugin.getConfig().set("Players." + target1.getUniqueId() + ".Pokes", pokeCount + i);
-                this.plugin.saveConfig();
+            if(!this.plugin.getConfig().getBoolean("Enable Database")) {
+                if (this.plugin.getConfig().getInt("Players." + target1.getUniqueId() + ".Pokes") <= 0) {
+                    this.plugin.getConfig().set("Players." + target1.getUniqueId() + ".Pokes", 1);
+                    this.plugin.saveConfig();
+                } else if (this.plugin.getConfig().getInt("Players." + target1.getUniqueId() + ".Pokes") > 0) {
+                    byte i = 1;
+                    int pokeCount = this.plugin.getConfig().getInt("Players." + target1.getUniqueId() + ".Pokes");
+                    this.plugin.getConfig().set("Players." + target1.getUniqueId() + ".Pokes", pokeCount + i);
+                    this.plugin.saveConfig();
+                }
+            }
+            if (this.plugin.getConfig().getBoolean("Enable Database")) {
+                this.plugin.data.addCount(target1.getUniqueId(), 1);
             }
         } else {
             sender.sendMessage(prefix + ChatColor.RED + "You need the 'poke.poke' permission to use this command.");
