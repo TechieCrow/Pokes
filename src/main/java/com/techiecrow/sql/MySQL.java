@@ -1,7 +1,6 @@
 package com.techiecrow.sql;
 
 import com.techiecrow.Pokes;
-import org.bukkit.Bukkit;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,10 +10,10 @@ public class MySQL {
 
     private Connection connection;
 
-    private Pokes plugin;
+    private final Pokes plugin;
 
-    public MySQL(Pokes plugin) {
-        this.plugin = plugin;
+    public MySQL(Pokes pl) {
+        plugin = pl;
     }
 
     public boolean isConnected()

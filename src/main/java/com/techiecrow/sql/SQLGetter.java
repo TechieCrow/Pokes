@@ -10,10 +10,10 @@ import java.util.UUID;
 
 public class SQLGetter {
 
-    private Pokes plugin;
+    private final Pokes plugin;
 
-    public SQLGetter(Pokes plugin) {
-        this.plugin = plugin;
+    public SQLGetter(Pokes pl) {
+        plugin = pl;
     }
 
     public void createTable() {
@@ -35,7 +35,6 @@ public class SQLGetter {
                 ps2.setString(2, uuid.toString());
                 ps2.executeUpdate();
 
-                return;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -47,10 +46,7 @@ public class SQLGetter {
             PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT * FROM pokes WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet results = ps.executeQuery();
-            if (results.next()) {
-                return true;
-            }
-            return false;
+            return results.next();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,7 +69,7 @@ public class SQLGetter {
             PreparedStatement ps = plugin.SQL.getConnection().prepareStatement("SELECT Count FROM pokes WHERE UUID=?");
             ps.setString(1, uuid.toString());
             ResultSet rs = ps.executeQuery();
-            int count = 0;
+            int count;
             if (rs.next()) {
                 count = rs.getInt("Count");
                 return count;
