@@ -6,7 +6,7 @@
 
     <groupId>com.techiecrow</groupId>
     <artifactId>Pokes</artifactId>
-    <version>1.7.5</version>
+    <version>1.8.0</version>
     <name>Pokes</name>
     <description>Poke people in Minecraft!</description>
 
@@ -66,6 +66,10 @@
             <id>CodeMC</id>
             <url>https://repo.codemc.org/repository/maven-public</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -81,6 +85,12 @@
             <artifactId>bstats-bukkit</artifactId>
             <version>2.2.1</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

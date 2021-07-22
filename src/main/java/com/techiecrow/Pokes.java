@@ -48,15 +48,22 @@ public class Pokes extends JavaPlugin implements Listener {
             try {
                 SQL.connect();
             } catch (ClassNotFoundException | SQLException e) {
-                Bukkit.getLogger().info("Database not connected");
+                Bukkit.getLogger().info(prefix + "Database not connected");
                 e.printStackTrace();
             }
 
             if (SQL.isConnected()) {
-                Bukkit.getLogger().info("Database is connected!");
+                Bukkit.getLogger().info(prefix + "Database is connected!");
                 data.createTable();
                 this.getServer().getPluginManager().registerEvents(this, this);
             }
+        }
+
+        if (PokePlayer.setupEconomy()) {
+            Bukkit.getLogger().info(prefix + "Vault found!, players will receive money when poking!");
+        }
+        else if (!PokePlayer.setupEconomy()) {
+            Bukkit.getLogger().info(prefix + "Vault not found, players will not receive money when poking.");
         }
     }
 

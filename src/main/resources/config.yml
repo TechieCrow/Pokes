@@ -23,6 +23,8 @@ Poke Sound: 'ENTITY_PIG_AMBIENT'
 
 CoolDown: 30
 
+Money: 100
+
 Enable Database: false
 
 SQL Host: localhost

@@ -1,16 +1,19 @@
 package com.techiecrow.commands;
 
 import com.techiecrow.Pokes;
-import org.bukkit.Bukkit;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 
 import java.util.HashMap;
 import java.util.Objects;
+
+import static org.bukkit.Bukkit.getServer;
 
 public class PokePlayer implements CommandExecutor {
 
@@ -20,6 +23,8 @@ public class PokePlayer implements CommandExecutor {
     public PokePlayer(Pokes pl) {
         plugin = pl;
     }
+
+    private static Economy econ = null;
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         int coolDown = plugin.getConfig().getInt("CoolDown", 30);
@@ -46,7 +51,7 @@ public class PokePlayer implements CommandExecutor {
                 return false;
             }
 
-            Player target1 = Bukkit.getServer().getPlayer(args[0]);
+            Player target1 = getServer().getPlayer(args[0]);
             if (target1 == null) {
                 sender.sendMessage(plugin.prefix + ChatColor.RED + " '" + args[0] + "' is not currently online.");
                 return true;
@@ -68,6 +73,11 @@ public class PokePlayer implements CommandExecutor {
             coolDowns.put(sender.getName(), System.currentTimeMillis());
 
             player.sendMessage(plugin.prefix + playerPoker);
+
+            if(setupEconomy())
+            {
+                econ.depositPlayer(player, plugin.getConfig().getDouble("Money"));
+            }
 
             target1.playSound(target1.getLocation(), Sound.valueOf(playSound), 1.0F, 1.0F);
 
@@ -92,5 +102,17 @@ public class PokePlayer implements CommandExecutor {
         }
 
         return false;
+    }
+
+    public static boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        econ = rsp.getProvider();
+        return true;
     }
 }

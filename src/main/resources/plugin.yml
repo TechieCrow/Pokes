@@ -1,10 +1,12 @@
 main: com.techiecrow.Pokes
 name: Pokes
 description: Poke people in Minecraft
-version: 1.7.5
+version: 1.8.0
 author: TechieCrow
 website: https://www.spigotmc.org/resources/pokes.14315/
 prefix: Pokes
+softdepend: [Vault, Essentials]
+api-version: 1.17
 commands:
   poke:
     description: Poke someone! Usage '/poke <player>'
