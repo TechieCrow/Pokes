@@ -24,7 +24,8 @@ public class Pokes extends JavaPlugin implements Listener {
     public MySQL SQL;
     public SQLGetter data;
 
-    public String prefix = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(this.getConfig().getString("Prefix")));
+    public String prefix = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(getConfig().getString("Prefix")));
+    public String consolePrefix = "[Pokes] ";
 
     @Override
     public void onEnable() {
@@ -34,13 +35,13 @@ public class Pokes extends JavaPlugin implements Listener {
         Metrics metrics = new Metrics(this, pluginId);
 
         // A custom bstats simple pie chart to see if databases are enabled or disabled
-        metrics.addCustomChart(new SimplePie("databases", () -> String.valueOf(this.getConfig().getBoolean("Enable Database"))));
+        metrics.addCustomChart(new SimplePie("databases", () -> String.valueOf(getConfig().getBoolean("Enable Database"))));
 
         this.RegisterCommands();
         this.RegisterConfig();
 
         // Check if database is enabled in config
-        if (this.getConfig().getBoolean("Enable Database")) {
+        if (getConfig().getBoolean("Enable Database")) {
             this.SQL = new MySQL(this);
             this.data = new SQLGetter(this);
 
@@ -48,22 +49,22 @@ public class Pokes extends JavaPlugin implements Listener {
             try {
                 SQL.connect();
             } catch (ClassNotFoundException | SQLException e) {
-                Bukkit.getLogger().info(prefix + "Database not connected");
+                Bukkit.getLogger().info(consolePrefix + "Database not connected");
                 e.printStackTrace();
             }
 
             if (SQL.isConnected()) {
-                Bukkit.getLogger().info(prefix + "Database is connected!");
+                Bukkit.getLogger().info(consolePrefix + "Database is connected!");
                 data.createTable();
-                this.getServer().getPluginManager().registerEvents(this, this);
+                getServer().getPluginManager().registerEvents(this, this);
             }
         }
 
         if (PokePlayer.setupEconomy()) {
-            Bukkit.getLogger().info(prefix + "Vault found!, players will receive money when poking!");
+            Bukkit.getLogger().info(consolePrefix + "Vault found!, players will receive money when poking!");
         }
         else if (!PokePlayer.setupEconomy()) {
-            Bukkit.getLogger().info(prefix + "Vault not found, players will not receive money when poking.");
+            Bukkit.getLogger().info(consolePrefix + "Vault not found, players will not receive money when poking.");
         }
     }
 
@@ -71,7 +72,7 @@ public class Pokes extends JavaPlugin implements Listener {
     public void onDisable() {
 
         // Need to close the database connection
-        if (this.getConfig().getBoolean("Enable Database")) {
+        if (getConfig().getBoolean("Enable Database")) {
             SQL.disconnect();
         }
     }
@@ -79,18 +80,19 @@ public class Pokes extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
 
+        Player player = event.getPlayer();
+
         // When player joins the server we need to add them to the database, can probably do this when a player gets poked or pokes someone
         // But it's just easier to add them when they join the server
-        if (this.getConfig().getBoolean("Enable Database")) {
-            Player player = event.getPlayer();
+        if (getConfig().getBoolean("Enable Database")) {
             data.createPlayer(player);
         }
     }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (label.equalsIgnoreCase("pokesreload") && sender.hasPermission("poke.reload")) {
-            this.reloadConfig();
-            this.getConfig();
+            reloadConfig();
+            getConfig();
             sender.sendMessage(prefix + ChatColor.GREEN + "Reloaded the config!");
             return true;
         } else {
@@ -101,13 +103,13 @@ public class Pokes extends JavaPlugin implements Listener {
 
     // Makes commands work
     public void RegisterCommands() {
-        Objects.requireNonNull(this.getCommand("poke")).setExecutor(new PokePlayer(this));
-        Objects.requireNonNull(this.getCommand("pokes")).setExecutor(new PokeCount(this));
+        Objects.requireNonNull(getCommand("poke")).setExecutor(new PokePlayer(this));
+        Objects.requireNonNull(getCommand("pokes")).setExecutor(new PokeCount(this));
     }
 
     // Make default config and save it
     private void RegisterConfig() {
-        this.getConfig().options().copyDefaults(true);
-        this.saveConfig();
+        getConfig().options().copyDefaults(true);
+        saveConfig();
     }
 }

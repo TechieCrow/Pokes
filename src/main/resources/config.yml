@@ -38,3 +38,5 @@ SQL Password: Password
 SQL Database: Database
 
 SQL Use SSL: false
+
+Update Checker: true
