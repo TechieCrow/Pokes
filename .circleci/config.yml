@@ -22,14 +22,11 @@ jobs:
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
+      # Store the plugin jar
+      - store_artifacts:
+          path: /home/circleci/project/target
     # The resource_class feature allows configuring CPU and RAM resources for each job. Different resource classes are available for different executors. https://circleci.com/docs/2.0/configuration-reference/#resourceclass
     resource_class: large
-
-  artifact:
-    machine: true
-    steps:
-      - store_artifacts:
-          path: /home/circleci/project/target/Pokes-*.jar
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -38,6 +35,3 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build
-  store artifacts:
-    jobs:
-      - artifact
